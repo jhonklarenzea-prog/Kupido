@@ -6,6 +6,7 @@ const websiteData = {
   recipientName: "Angelic",
   senderName: "Renzi",
 
+  
   giftMessage: "You received a gift from Renzi.",
   menuTitle: "Choose your gift",
   menuSubtitle: "things I made for you, Babi",
