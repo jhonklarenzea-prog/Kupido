@@ -1,0 +1,140 @@
+/* ===== COLORS: change these to restyle the whole site ===== */
+:root {
+  --bg: #0e0b0b;          /* near-black background */
+  --paper: #1c1513;       /* card / paper color */
+  --red: #8b1a26;         /* main deep red */
+  --crimson: #5e0f1a;     /* darker red */
+  --text: #f3e9d8;        /* warm cream text */
+  --gold: #c9a96e;        /* muted gold highlight */
+  --hand: "Segoe Script", "Bradley Hand", "Comic Sans MS", cursive;
+  --serif: Georgia, "Times New Roman", serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { min-height: 100%; }
+body {
+  background: radial-gradient(circle at 50% 15%, #2a1215, var(--bg) 70%) fixed;
+  color: var(--text);
+  font-family: var(--serif);
+  overflow-x: hidden;
+}
+.hand { font-family: var(--hand); font-weight: normal; }
+.tiny { font-size: .85rem; color: var(--gold); letter-spacing: .12em; text-transform: lowercase; }
+.hidden { display: none !important; }
+
+/* ===== FLOATING HEARTS ===== */
+#particles { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.float {
+  position: absolute; bottom: -40px; opacity: 0;
+  animation: rise linear infinite;
+}
+@keyframes rise {
+  0%   { transform: translateY(0) rotate(0); opacity: 0; }
+  10%  { opacity: .5; }
+  90%  { opacity: .25; }
+  100% { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+}
+
+/* ===== SCREENS ===== */
+main { position: relative; z-index: 1; min-height: 100dvh; }
+.screen {
+  display: none; min-height: 100dvh; padding: 24px 16px;
+  flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  text-align: center;
+}
+.screen.active { display: flex; animation: fadeIn .9s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: none; } }
+
+/* ===== BUTTONS ===== */
+.btn {
+  font-family: var(--serif); font-size: 1rem; color: var(--text);
+  background: transparent; border: 1px solid var(--gold);
+  padding: 12px 22px; border-radius: 999px; cursor: pointer;
+  transition: .25s; min-height: 44px;
+}
+.btn:hover { background: rgba(201,169,110,.12); transform: translateY(-2px); }
+.btn.primary {
+  background: var(--red); border-color: var(--red);
+  box-shadow: 0 0 18px rgba(139,26,38,.6); font-size: 1.15rem; padding: 14px 44px;
+  animation: glow 2.4s ease-in-out infinite;
+}
+@keyframes glow { 50% { box-shadow: 0 0 30px rgba(180,30,50,.85); } }
+
+/* ===== GIFT CARD ===== */
+.gift-card {
+  width: min(92vw, 420px); padding: 34px 24px; background: var(--paper);
+  border: 2px solid var(--gold); outline: 1px dashed var(--crimson); outline-offset: -10px;
+  border-radius: 14px; display: flex; flex-direction: column; align-items: center; gap: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.6); animation: bob 5s ease-in-out infinite;
+}
+.gift-card h1 { font-family: var(--hand); font-weight: normal; font-size: 1.5rem; line-height: 1.5; min-height: 4.5rem; }
+.gift-icon { font-size: 3.4rem; }
+@keyframes bob { 50% { transform: translateY(-6px) rotate(-.4deg); } }
+.heartbeat { animation: beat 1.4s ease-in-out infinite; }
+@keyframes beat { 0%,100% { transform: scale(1); } 15% { transform: scale(1.15); } 30% { transform: scale(1); } 45% { transform: scale(1.1); } }
+
+/* ===== MENU ===== */
+#menuTitle { font-size: 2rem; color: var(--text); }
+.choices { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 12px; }
+.choice {
+  width: min(42vw, 190px); aspect-ratio: 3 / 4; cursor: pointer; color: var(--text);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  border-radius: 12px; border: 2px solid var(--gold); transition: .3s;
+  box-shadow: 0 12px 30px rgba(0,0,0,.5);
+}
+.choice[data-type="letter"] { background: linear-gradient(160deg, var(--crimson), #2a0a10); transform: rotate(-2deg); }
+.choice[data-type="poem"]   { background: linear-gradient(160deg, #2b2320, var(--paper)); transform: rotate(2deg); border-style: dashed; }
+.choice:hover { transform: translateY(-8px) rotate(0) scale(1.04); border-color: #e6c98d; }
+.ico { font-size: 3.6rem; filter: drop-shadow(0 4px 6px rgba(0,0,0,.5)); animation: wobble 4s ease-in-out infinite; }
+.label { font-size: 1.4rem; }
+@keyframes wobble { 50% { transform: rotate(8deg) scale(1.06); } }
+
+/* ===== READING PAPER ===== */
+.paper {
+  width: min(94vw, 640px); padding: 28px 22px 22px; border-radius: 6px;
+  background:
+    repeating-linear-gradient(transparent 0 33px, rgba(201,169,110,.10) 33px 34px),
+    var(--paper);
+  border: 1px solid var(--gold); outline: 2px double var(--crimson); outline-offset: -8px;
+  box-shadow: 0 25px 60px rgba(0,0,0,.7); text-align: left;
+  animation: unfold .9s ease;
+}
+@keyframes unfold { from { transform: perspective(700px) rotateX(-25deg) scaleY(.6); opacity: 0; } to { transform: none; opacity: 1; } }
+.paper h2 { font-size: 1.6rem; color: var(--gold); text-align: center; margin-bottom: 14px; }
+.paper-body { max-height: 55dvh; overflow-y: auto; padding-right: 6px; }
+.typed { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 34px; font-size: 1.05rem; }
+.typed.typing::after { content: "|"; color: var(--red); animation: blink .8s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.sign { color: var(--gold); text-align: right; margin-top: 16px; font-size: 1.2rem; opacity: 0; transition: opacity 1.2s; }
+.sign.show { opacity: 1; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+/* ===== MUSIC CONTROL (small, bottom-right) ===== */
+.music {
+  position: fixed; right: 12px; bottom: 12px; z-index: 5;
+  display: flex; align-items: center; gap: 8px; padding: 6px 10px;
+  background: rgba(20,14,14,.75); border: 1px solid rgba(201,169,110,.4);
+  border-radius: 999px; backdrop-filter: blur(4px);
+}
+.music button { background: none; border: none; color: var(--gold); font-size: 1.2rem; cursor: pointer; width: 34px; height: 34px; }
+.music input { width: 70px; accent-color: var(--red); }
+.bars { display: flex; gap: 2px; align-items: flex-end; height: 14px; }
+.bars i { width: 3px; height: 4px; background: var(--red); border-radius: 2px; }
+.music.playing .bars i { animation: eq .9s ease-in-out infinite; }
+.music.playing .bars i:nth-child(2) { animation-delay: .25s; }
+.music.playing .bars i:nth-child(3) { animation-delay: .5s; }
+@keyframes eq { 50% { height: 14px; } }
+
+.toast {
+  position: fixed; left: 50%; bottom: 70px; transform: translateX(-50%);
+  background: var(--crimson); padding: 8px 16px; border-radius: 8px; font-size: .9rem;
+  opacity: 0; pointer-events: none; transition: opacity .4s; z-index: 6; max-width: 90vw; text-align: center;
+}
+.toast.show { opacity: 1; }
+
+@media (max-width: 480px) {
+  .gift-card h1 { font-size: 1.25rem; }
+  .music input { width: 55px; }
+  .typed { font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
