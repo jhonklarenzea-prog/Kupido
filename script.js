@@ -8,7 +8,7 @@ const websiteData = {
 
   giftMessage: "You received a gift from Renzi.",
   menuTitle: "Choose your gift",
-  menuSubtitle: "ttle things I made for you",
+  menuSubtitle: "things I made for you, Babi",
 
   letterTitle: "My cutie Angelic…",
   poemTitle: "Manunulat",
