@@ -109,7 +109,7 @@ Ang tulang aking ginawa.
   // or a local file such as "assets/music/song.mp3".
   // Leave "" for no music (the music control will hide itself).
   // NOTE: YouTube/Spotify page links will NOT work here.
-  musicURL: "SUGARCANE-Leonora-SnapYT.App.mp3",
+  musicURL: "music.mp3",
   musicVolume: 0.5,   // 0 (silent) to 1 (full)
 
   heartCount: 14      // number of floating hearts
